@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neeraj Soni - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- EmailJS SDK -->
+    
+    <script
+      type="text/javascript"
+       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+            colors: {
+              "neon-blue": "#00f5ff",
+              "neon-purple": "#bf00ff",
+              "neon-green": "#39ff14",
+              "dark-bg": "#0a0a0a",
+              "dark-card": "#1a1a1a",
+              "dark-border": "#333333",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "slide-up": "slideUp 0.8s ease-out",
+              "fade-in": "fadeIn 1s ease-out",
+              "bounce-slow": "bounce 3s infinite",
+              "pulse-slow": "pulse 4s infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+              glow: {
+                "0%": { boxShadow: "0 0 20px #00f5ff" },
+                "100%": { boxShadow: "0 0 40px #00f5ff, 0 0 60px #00f5ff" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(100px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(45deg, #00f5ff, #bf00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .neon-border {
+        border: 2px solid transparent;
+        background: linear-gradient(45deg, #00f5ff, #bf00ff) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: exclude;
+        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .hover-glow:hover {
+        box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+      .particle {
+        position: absolute;
+        background: #00f5ff;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: float 6s ease-in-out infinite;
+      }
+      .typing-animation::after {
+        content: "|";
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+      .scroll-indicator {
+        animation: bounce 2s infinite;
+      }
+      .skill-bar {
+        background: linear-gradient(90deg, #00f5ff, #bf00ff);
+        height: 4px;
+        border-radius: 2px;
+        transform-origin: left;
+        animation: fillBar 2s ease-out;
+      }
+      @keyframes fillBar {
+        0% {
+          transform: scaleX(0);
+        }
+        100% {
+          transform: scaleX(1);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-white overflow-x-hidden">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 z-0">
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-dark-bg via-gray-900 to-dark-bg"
+      ></div>
+      <div
+        class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue opacity-10 rounded-full blur-3xl animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-3xl animate-pulse-slow"
+      ></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex-shrink-0">
+            <h1 class="text-2xl font-bold gradient-text">Neeraj Soni</h1>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="#home"
+                class="nav-link text-gray-300 hover:text-neon-blue transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="nav-link text-gray-300 hover:text-neon-blue transition-colors duration-300"
+                >About</a
+              >
+              <a
+                href="#skills"
+                class="nav-link text-gray-300 hover:text-neon-blue transition-colors duration-300"
+                >Skills</a
+              >
+              <a
+                href="#projects"
+                class="nav-link text-gray-300 hover:text-neon-blue transition-colors duration-300"
+                >Projects</a
+              >
+              <a
+                href="#contact"
+                class="nav-link text-gray-300 hover:text-neon-blue transition-colors duration-300"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-btn"
+              class="text-gray-300 hover:text-neon-blue"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden glass-effect">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-3 py-2 text-gray-300 hover:text-neon-blue"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 text-gray-300 hover:text-neon-blue"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 text-gray-300 hover:text-neon-blue"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 text-gray-300 hover:text-neon-blue"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 text-gray-300 hover:text-neon-blue"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center pt-16"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="animate-fade-in">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6">
+            Hi, I'm
+            <span class="gradient-text typing-animation" id="typing-text"
+              >Neeraj Soni</span
+            >
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up">
+            Full Stack Developer & Java Enthusiast
+          </p>
+          <p
+            class="text-lg text-gray-400 mb-12 max-w-3xl mx-auto animate-slide-up"
+          >
+            Passionate about creating innovative solutions with Java, Spring
+            Boot, and modern web technologies. I transform ideas into powerful,
+            scalable applications.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up"
+          >
+            <a
+              href="#projects"
+              class="group relative px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-semibold hover-glow transition-all duration-300"
+            >
+              <span class="relative z-10">View My Work</span>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-4 border-2 border-neon-blue text-neon-blue rounded-full font-semibold hover:bg-neon-blue hover:text-dark-bg transition-all duration-300"
+            >
+              Let's Connect
+            </a>
+            <a
+              href="resume.pdf"
+              class="flex items-center gap-2 px-6 py-3 glass-effect rounded-full hover-glow transition-all duration-300"
+            >
+              <i class="fas fa-download"></i>
+              Resume
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator"
+      >
+        <div
+          class="w-6 h-10 border-2 border-neon-blue rounded-full flex justify-center"
+        >
+          <div
+            class="w-1 h-3 bg-neon-blue rounded-full mt-2 animate-bounce"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            About Me
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"
+          ></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <p class="text-lg text-gray-300 leading-relaxed">
+              I'm a dedicated software developer with expertise in
+              <span class="text-neon-blue font-semibold">Java programming</span
+              >,
+              <span class="text-neon-purple font-semibold">Spring Boot</span>,
+              and modern web technologies. My passion lies in creating
+              efficient, scalable applications that solve real-world problems.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed">
+              With hands-on experience in full-stack development, I've
+              successfully delivered projects ranging from e-commerce platforms
+              to real-time data applications. I'm always eager to learn new
+              technologies and take on challenging projects.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mt-8">
+              <div class="text-center glass-effect p-6 rounded-xl hover-glow">
+                <div
+                  class="text-3xl font-bold gradient-text mb-2"
+                  data-count="6"
+                >
+                  0
+                </div>
+                <div class="text-gray-400">Projects</div>
+              </div>
+              <div class="text-center glass-effect p-6 rounded-xl hover-glow">
+                <div
+                  class="text-3xl font-bold gradient-text mb-2"
+                  data-count="8"
+                >
+                  0
+                </div>
+                <div class="text-gray-400">Technologies</div>
+              </div>
+              <div class="text-center glass-effect p-6 rounded-xl hover-glow">
+                <div
+                  class="text-3xl font-bold gradient-text mb-2"
+                  data-count="100"
+                >
+                  0
+                </div>
+                <div class="text-gray-400">Dedication</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="w-80 h-80 mx-auto relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full animate-glow"
+              ></div>
+              <div
+                class="absolute inset-2 bg-dark-bg rounded-full flex items-center justify-center"
+              >
+                <i class="fas fa-code text-6xl gradient-text animate-float"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            Skills & Technologies
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"
+          ></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Programming Languages -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-code text-3xl text-neon-blue mr-4"></i>
+              <h3 class="text-2xl font-bold">Programming</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Java</span>
+                  <span class="text-neon-blue">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[90%]"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>C</span>
+                  <span class="text-neon-blue">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[80%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-layer-group text-3xl text-neon-purple mr-4"></i>
+              <h3 class="text-2xl font-bold">Frameworks</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Spring Boot</span>
+                  <span class="text-neon-purple">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[85%]"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>JDBC</span>
+                  <span class="text-neon-purple">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[80%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Technologies -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-globe text-3xl text-neon-green mr-4"></i>
+              <h3 class="text-2xl font-bold">Web Tech</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>JavaScript</span>
+                  <span class="text-neon-green">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[85%]"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>HTML/CSS</span>
+                  <span class="text-neon-green">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[90%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-database text-3xl text-yellow-400 mr-4"></i>
+              <h3 class="text-2xl font-bold">Database</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>MySQL</span>
+                  <span class="text-yellow-400">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[85%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-tools text-3xl text-orange-400 mr-4"></i>
+              <h3 class="text-2xl font-bold">Tools</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Git/GitHub</span>
+                  <span class="text-orange-400">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[90%]"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>MS Office</span>
+                  <span class="text-orange-400">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[85%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Design -->
+          <div class="glass-effect p-8 rounded-2xl hover-glow group">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-palette text-3xl text-pink-400 mr-4"></i>
+              <h3 class="text-2xl font-bold">Design</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span>Canva</span>
+                  <span class="text-pink-400">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar w-[80%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            Featured Projects
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"
+          ></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-neon-blue to-neon-purple p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-users text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+              <div
+                class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+              ></div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                Student Management System
+              </h3>
+              <p class="text-gray-400 mb-4">
+                A comprehensive web application built with Spring Boot for
+                managing student records, courses, and grades.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-neon-blue bg-opacity-20 text-neon-blue rounded-full text-sm"
+                  >Java</span
+                >
+                <span
+                  class="px-3 py-1 bg-neon-purple bg-opacity-20 text-neon-purple rounded-full text-sm"
+                  >Spring Boot</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >MySQL</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-neon-purple to-neon-green p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-book text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                Library Management System
+              </h3>
+              <p class="text-gray-400 mb-4">
+                A Java-based desktop application using JDBC for database
+                connectivity with intuitive GUI.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-neon-blue bg-opacity-20 text-neon-blue rounded-full text-sm"
+                  >Java</span
+                >
+                <span
+                  class="px-3 py-1 bg-neon-green bg-opacity-20 text-neon-green rounded-full text-sm"
+                  >JDBC</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >MySQL</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-yellow-400 to-orange-500 p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-coins text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                PreciousMetal Price Tracker
+              </h3>
+              <p class="text-gray-400 mb-4">
+                Real-time web application displaying live gold and silver prices
+                using external API integration.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm"
+                  >CSS</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-green-400 to-blue-500 p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-shopping-cart text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                DailyDeals E-commerce
+              </h3>
+              <p class="text-gray-400 mb-4">
+                Fully responsive e-commerce platform with shopping cart
+                functionality and modern design.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm"
+                  >CSS</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-purple-400 to-pink-500 p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-cloud-sun text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                Weather Forecast App
+              </h3>
+              <p class="text-gray-400 mb-4">
+                Dynamic weather application with real-time data and enhanced
+                performance through async requests.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm"
+                  >CSS</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >JavaScript</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div
+            class="group glass-effect rounded-2xl overflow-hidden hover-glow"
+          >
+            <div
+              class="relative h-48 bg-gradient-to-br from-red-400 to-yellow-500 p-8 flex items-center justify-center"
+            >
+              <i
+                class="fas fa-store text-6xl text-white group-hover:scale-110 transition-transform duration-300"
+              ></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 gradient-text">
+                Inventory Management
+              </h3>
+              <p class="text-gray-400 mb-4">
+                Spring Boot application for managing product inventory with
+                automated alerts and reporting.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-neon-purple bg-opacity-20 text-neon-purple rounded-full text-sm"
+                  >Spring Boot</span
+                >
+                <span
+                  class="px-3 py-1 bg-neon-green bg-opacity-20 text-neon-green rounded-full text-sm"
+                  >JPA</span
+                >
+                <span
+                  class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm"
+                  >MySQL</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-neon-blue hover:text-white transition-colors"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            Get In Touch
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"
+          ></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-2xl font-bold mb-4">
+                Let's create something amazing together!
+              </h3>
+              <p class="text-gray-400 text-lg">
+                I'm actively seeking internship opportunities and exciting
+                projects. Whether you have a question about my work or want to
+                discuss potential collaborations, feel free to reach out!
+              </p>
+            </div>
+            <div class="space-y-6">
+              <div
+                class="flex items-center space-x-4 glass-effect p-4 rounded-xl hover-glow"
+              >
+                <div
+                  class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-envelope text-white"></i>
+                </div>
+                <div>
+                  <p class="text-gray-400">Email</p>
+                  <p class="text-white">sonineeraj0405@gmail.com</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center space-x-4 glass-effect p-4 rounded-xl hover-glow"
+              >
+                <div
+                  class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-phone text-white"></i>
+                </div>
+                <div>
+                  <p class="text-gray-400">Phone</p>
+                  <p class="text-white">+91-89626 77644</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center space-x-4 glass-effect p-4 rounded-xl hover-glow"
+              >
+                <div
+                  class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-map-marker-alt text-white"></i>
+                </div>
+                <div>
+                  <p class="text-gray-400">Location</p>
+                  <p class="text-white">Jaipur, Rajasthan, India</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <i class="fab fa-github text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <i class="fab fa-linkedin text-white"></i>
+              </a>
+              <a
+                href="mailto:sonineeraj0405@gmail.com"
+                class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <i class="fas fa-envelope text-white"></i>
+              </a>
+              <a
+                href="tel:+918962677644"
+                class="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <i class="fas fa-phone text-white"></i>
+              </a>
+            </div>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl">
+            <form id="contact-form" class="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Your Name"
+                  required
+                  class="w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-xl focus:border-neon-blue focus:outline-none transition-colors duration-300"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Your Email"
+                  required
+                  class="w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-xl focus:border-neon-blue focus:outline-none transition-colors duration-300"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                  class="w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-xl focus:border-neon-blue focus:outline-none transition-colors duration-300"
+                />
+              </div>
+              <div>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Your Message"
+                  required
+                  class="w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-xl focus:border-neon-blue focus:outline-none transition-colors duration-300 resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl font-semibold hover-glow transition-all duration-300"
+              >
+                <span class="submit-text">Send Message</span>
+                <i
+                  class="fas fa-spinner fa-spin hidden loading-spinner ml-2"
+                ></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-gray-400">
+          &copy; 2024 Neeraj Soni. All rights reserved. | Full Stack Developer
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
